@@ -247,7 +247,7 @@
             font-family: 'Bebas Neue', sans-serif;
             font-size: 1.25rem;
             letter-spacing: 1px;
-            transition: transform, opacity, border-color, box-shadow 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
             position: relative;
             cursor: pointer;
             overflow: hidden;
@@ -413,7 +413,7 @@
             background: var(--teal);
             text-decoration: none;
             position: relative;
-            transition: transform, opacity, border-color, box-shadow 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
             cursor: pointer;
             overflow: hidden;
             border-radius: 8px;
@@ -625,7 +625,7 @@
             object-position: top center;
             opacity: 0;
             transform: translateY(30px);
-            transition: transform, opacity, border-color, box-shadow 1s ease-out;
+            transition: all 1s ease-out;
             border-radius: 8px;
         }
 
@@ -706,7 +706,7 @@
             padding: 3rem 2.5rem;
             border: 2px solid rgba(20, 184, 166, 0.3);
             border-radius: 8px;
-            transition: transform, opacity, border-color, box-shadow 0.4s ease;
+            transition: all 0.4s ease;
             opacity: 0;
             transform: translateY(30px);
             position: relative;
@@ -877,7 +877,7 @@
             border-right: 1px solid rgba(20, 184, 166, 0.2);
             opacity: 0;
             transform: translateY(20px);
-            transition: transform, opacity, border-color, box-shadow 0.6s ease;
+            transition: all 0.6s ease;
             position: relative;
             z-index: 1;
             /* Performance: GPU acceleration for animations */
@@ -969,7 +969,7 @@
         .video-item {
             opacity: 0;
             transform: translateY(30px);
-            transition: transform, opacity, border-color, box-shadow 0.8s ease;
+            transition: all 0.8s ease;
         }
 
         .video-item.visible {
@@ -1161,7 +1161,7 @@
             justify-content: center;
             font-size: 1.5rem;
             line-height: 1;
-            transition: transform, opacity, border-color, box-shadow 0.3s ease;
+            transition: all 0.3s ease;
             flex-shrink: 0;
         }
 
@@ -1245,7 +1245,7 @@
         .scroll-reveal {
             opacity: 0;
             transform: translateY(50px);
-            transition: transform, opacity, border-color, box-shadow 1s ease-out;
+            transition: all 1s ease-out;
         }
 
         .scroll-reveal.visible {
@@ -1340,7 +1340,6 @@
     </style>
 </head>
 <body>
-    <div class="page-transition"></div>
     
     <a href="#main-content" class="skip-to-main">Skip to main content</a>
     
@@ -1512,45 +1511,39 @@
         <div class="video-grid">
             <div class="video-item">
                 <div class="video-container">
-                    <iframe loading="lazy" 
-                        src="https://www.youtube.com/embed/MqGzPfq79TE" 
+                    <iframe 
+                        src="https://www.youtube-nocookie.com/embed/MqGzPfq79TE" 
                         title="3 Kings performing Lil Boo Thang - Live rock and DJ fusion" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                         allowfullscreen
                         loading="lazy"
-                        width="560"
-                        height="315">
+                        style="border: none;">
                     </iframe>
                 </div>
                 <div class="video-label">Lil Boo Thang</div>
             </div>
             <div class="video-item">
                 <div class="video-container">
-                    <iframe loading="lazy" 
-                        src="https://www.youtube.com/embed/8I6YymNl9zA" 
+                    <iframe 
+                        src="https://www.youtube-nocookie.com/embed/8I6YymNl9zA" 
                         title="3 Kings performing Anybody - Live rock and DJ fusion" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                         allowfullscreen
                         loading="lazy"
-                        width="560"
-                        height="315">
+                        style="border: none;">
                     </iframe>
                 </div>
                 <div class="video-label">Anybody</div>
             </div>
             <div class="video-item">
                 <div class="video-container">
-                    <iframe loading="lazy" 
-                        src="https://www.youtube.com/embed/RSSMSufvRiE" 
+                    <iframe 
+                        src="https://www.youtube-nocookie.com/embed/RSSMSufvRiE" 
                         title="3 Kings performing I Wish - Live rock and DJ fusion" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                         allowfullscreen
                         loading="lazy"
-                        width="560"
-                        height="315">
+                        style="border: none;">
                     </iframe>
                 </div>
                 <div class="video-label">I Wish</div>
@@ -1705,13 +1698,6 @@
             });
         }
 
-        // Page transition cleanup (remove from DOM after animation)
-        const pageTransition = document.querySelector('.page-transition');
-        if (pageTransition) {
-            pageTransition.addEventListener('animationend', () => {
-                pageTransition.remove();
-            });
-        }
 
         // Logo smooth scroll to top
         const logo = document.querySelector('.logo');
