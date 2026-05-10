@@ -940,24 +940,6 @@
             line-height: 1.8;
         }
 
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            background: var(--dark-gray);
-            border: 2px solid rgba(20, 184, 166, 0.3);
-            border-radius: 8px;
-        }
-
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
         /* Video Grid Layout */
         .video-grid {
             display: grid;
@@ -966,28 +948,89 @@
             margin-top: 4rem;
         }
 
-        .video-item {
+        .video-thumb {
+            display: block;
+            text-decoration: none;
             opacity: 0;
             transform: translateY(30px);
             transition: all 0.8s ease;
         }
 
-        .video-item.visible {
+        .video-thumb.visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-        .video-item:nth-child(1) { transition-delay: 0.1s; }
-        .video-item:nth-child(2) { transition-delay: 0.2s; }
-        .video-item:nth-child(3) { transition-delay: 0.3s; }
+        .video-thumb:nth-child(1) { transition-delay: 0.1s; }
+        .video-thumb:nth-child(2) { transition-delay: 0.2s; }
+        .video-thumb:nth-child(3) { transition-delay: 0.3s; }
 
-        .video-label {
+        .video-thumb-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            background: var(--dark-gray);
+            border: 2px solid rgba(20, 184, 166, 0.3);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .video-thumb:hover .video-thumb-container {
+            border-color: rgba(20, 184, 166, 0.6);
+            box-shadow: 
+                0 15px 40px rgba(0, 0, 0, 0.6),
+                0 0 60px rgba(20, 184, 166, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .video-thumb-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: filter 0.3s ease;
+        }
+
+        .video-thumb:hover .video-thumb-image {
+            filter: brightness(0.8);
+        }
+
+        .video-play-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 68px;
+            height: 48px;
+            transition: transform 0.3s ease;
+            pointer-events: none;
+            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
+        }
+
+        .video-thumb:hover .video-play-overlay {
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .play-icon {
+            width: 100%;
+            height: 100%;
+        }
+
+        .video-thumb-label {
             font-family: 'Bebas Neue', sans-serif;
             font-size: 1.25rem;
             letter-spacing: 1px;
             color: var(--teal);
             margin-top: 1rem;
             text-align: center;
+            transition: color 0.3s ease;
+        }
+
+        .video-thumb:hover .video-thumb-label {
+            color: var(--white);
         }
 
         /* Booking Section - Centered Impact */
@@ -1509,45 +1552,51 @@
             </p>
         </div>
         <div class="video-grid">
-            <div class="video-item">
-                <div class="video-container">
-                    <iframe 
-                        src="https://www.youtube-nocookie.com/embed/MqGzPfq79TE" 
-                        title="3 Kings performing Lil Boo Thang - Live rock and DJ fusion" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                        allowfullscreen
-                        loading="lazy"
-                        style="border: none;">
-                    </iframe>
+            <a href="https://www.youtube.com/watch?v=MqGzPfq79TE" target="_blank" rel="noopener noreferrer" class="video-thumb" aria-label="Watch Lil Boo Thang on YouTube">
+                <div class="video-thumb-container">
+                    <img src="https://img.youtube.com/vi/MqGzPfq79TE/maxresdefault.jpg" 
+                         alt="3 Kings performing Lil Boo Thang" 
+                         class="video-thumb-image"
+                         loading="lazy">
+                    <div class="video-play-overlay">
+                        <svg class="play-icon" viewBox="0 0 68 48" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z" fill="#f00"></path>
+                            <path d="M 45,24 27,14 27,34" fill="#fff"></path>
+                        </svg>
+                    </div>
                 </div>
-                <div class="video-label">Lil Boo Thang</div>
-            </div>
-            <div class="video-item">
-                <div class="video-container">
-                    <iframe 
-                        src="https://www.youtube-nocookie.com/embed/8I6YymNl9zA" 
-                        title="3 Kings performing Anybody - Live rock and DJ fusion" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                        allowfullscreen
-                        loading="lazy"
-                        style="border: none;">
-                    </iframe>
+                <div class="video-thumb-label">Lil Boo Thang</div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=8I6YymNl9zA" target="_blank" rel="noopener noreferrer" class="video-thumb" aria-label="Watch Anybody on YouTube">
+                <div class="video-thumb-container">
+                    <img src="https://img.youtube.com/vi/8I6YymNl9zA/maxresdefault.jpg" 
+                         alt="3 Kings performing Anybody" 
+                         class="video-thumb-image"
+                         loading="lazy">
+                    <div class="video-play-overlay">
+                        <svg class="play-icon" viewBox="0 0 68 48" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z" fill="#f00"></path>
+                            <path d="M 45,24 27,14 27,34" fill="#fff"></path>
+                        </svg>
+                    </div>
                 </div>
-                <div class="video-label">Anybody</div>
-            </div>
-            <div class="video-item">
-                <div class="video-container">
-                    <iframe 
-                        src="https://www.youtube-nocookie.com/embed/RSSMSufvRiE" 
-                        title="3 Kings performing I Wish - Live rock and DJ fusion" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                        allowfullscreen
-                        loading="lazy"
-                        style="border: none;">
-                    </iframe>
+                <div class="video-thumb-label">Anybody</div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=RSSMSufvRiE" target="_blank" rel="noopener noreferrer" class="video-thumb" aria-label="Watch I Wish on YouTube">
+                <div class="video-thumb-container">
+                    <img src="https://img.youtube.com/vi/RSSMSufvRiE/maxresdefault.jpg" 
+                         alt="3 Kings performing I Wish" 
+                         class="video-thumb-image"
+                         loading="lazy">
+                    <div class="video-play-overlay">
+                        <svg class="play-icon" viewBox="0 0 68 48" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z" fill="#f00"></path>
+                            <path d="M 45,24 27,14 27,34" fill="#fff"></path>
+                        </svg>
+                    </div>
                 </div>
-                <div class="video-label">I Wish</div>
-            </div>
+                <div class="video-thumb-label">I Wish</div>
+            </a>
         </div>
     </section>
 
@@ -1627,7 +1676,7 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.scroll-reveal, .bio-image, .member, .credential, .video-item').forEach(el => {
+        document.querySelectorAll('.scroll-reveal, .bio-image, .member, .credential, .video-thumb').forEach(el => {
             observer.observe(el);
         });
 
