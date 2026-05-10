@@ -331,6 +331,90 @@
             box-shadow: 0 20px 60px rgba(20, 184, 166, 0.4);
         }
 
+        /* Disabled/Deactivated Button State */
+        .magnetic-btn.disabled,
+        .nav-cta.disabled {
+            background: rgba(107, 114, 128, 0.15);
+            color: rgba(107, 114, 128, 0.6);
+            border: 2px solid rgba(107, 114, 128, 0.3);
+            cursor: not-allowed;
+            pointer-events: auto;
+            position: relative;
+            padding-right: 4rem;
+            opacity: 0.7;
+        }
+
+        .magnetic-btn.disabled .btn-ripple,
+        .nav-cta.disabled .btn-ripple {
+            display: none;
+        }
+
+        .magnetic-btn.disabled:hover,
+        .nav-cta.disabled:hover {
+            transform: none;
+            box-shadow: none;
+            scale: 1;
+            opacity: 0.5;
+        }
+
+        /* X icon for disabled state */
+        .magnetic-btn.disabled .btn-icon,
+        .nav-cta.disabled .btn-icon {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            color: rgba(107, 114, 128, 0.8);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .magnetic-btn.disabled:hover .btn-icon,
+        .nav-cta.disabled:hover .btn-icon {
+            opacity: 1;
+        }
+
+        /* Tooltip for disabled buttons */
+        .magnetic-btn.disabled .btn-tooltip,
+        .nav-cta.disabled .btn-tooltip {
+            position: absolute;
+            bottom: calc(100% + 1.5rem);
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--dark-blue);
+            color: var(--white);
+            padding: 0.75rem 1.25rem;
+            border-radius: 4px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 400;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            z-index: 1000;
+            border: 1px solid rgba(20, 184, 166, 0.3);
+        }
+
+        .magnetic-btn.disabled:hover .btn-tooltip,
+        .nav-cta.disabled:hover .btn-tooltip {
+            opacity: 1;
+            transform: translateX(-50%) translateY(-5px);
+        }
+
+        /* Tooltip arrow */
+        .magnetic-btn.disabled .btn-tooltip::after,
+        .nav-cta.disabled .btn-tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 6px solid transparent;
+            border-top-color: var(--dark-blue);
+        }
+
         /* Bio Section - Centered with Breakout Image */
         .bio {
             max-width: 1200px;
@@ -933,6 +1017,17 @@
                 Where live rock power collides with DJ mastery. 
                 A sonic fusion that transforms every stage into an unforgettable experience.
             </p>
+            <!-- 
+            To enable disabled state, add these to the button:
+            1. Add class "disabled" to the button
+            2. Add inner elements for icon and tooltip:
+            
+            <a href="#book" class="magnetic-btn disabled" id="heroBtn" aria-label="Book 3 Kings for your event">
+                <span class="btn-icon">✕</span>
+                <span class="btn-tooltip">Booking opens soon!</span>
+                Book Your Event
+            </a>
+            -->
             <a href="#book" class="magnetic-btn" id="heroBtn" aria-label="Book 3 Kings for your event">Book Your Event</a>
         </div>
         <img src="https://placehold.co/800x1200/0A1628/14B8A6?text=Band+Photo" 
@@ -1087,7 +1182,11 @@
             Having rocked arenas, festivals, and award shows in their individual careers, 
             these 3 Kings have now joined forces to build a new kingdom of unforgettable vibes.
         </p>
-        <a href="mailto:booking@3kings.com" class="magnetic-btn" id="bookingBtn" aria-label="Send email to book 3 Kings">Book 3 Kings</a>
+        <a href="mailto:booking@3kings.com" class="magnetic-btn disabled" id="bookingBtn" aria-label="Send email to book 3 Kings">
+            <span class="btn-icon">✕</span>
+            <span class="btn-tooltip">Booking opens soon - Site under construction!</span>
+            Book 3 Kings
+        </a>
     </section>
 
     </main>
@@ -1217,6 +1316,15 @@
         if (yearElement) {
             yearElement.textContent = currentYear;
         }
+
+        // Disabled button click prevention
+        document.querySelectorAll('.disabled').forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+            });
+        });
     </script>
 </body>
 </html>
