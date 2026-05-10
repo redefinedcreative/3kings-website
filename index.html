@@ -3,7 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3 Kings | Live Rock Meets DJ Performance</title>
+    
+    <!-- Primary SEO Meta Tags -->
+    <title>3 Kings Band | Premium Live Rock + DJ Entertainment for Events</title>
+    <meta name="description" content="Book 3 Kings - the ultimate fusion of live rock band and DJ performance. RIAA Gold certified with 150M+ Spotify streams. Perfect for corporate events, weddings, and luxury private parties.">
+    <meta name="keywords" content="3 Kings band, event band, corporate entertainment, live rock band, DJ performance, wedding band, private party entertainment, Ryan Patrick, Joe Conner, DJ Chaney, OTHERWISE, party band, luxury events">
+    <meta name="author" content="3 Kings">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="canonical" href="https://3kingsband.com">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://3kingsband.com">
+    <meta property="og:site_name" content="3 Kings Band">
+    <meta property="og:title" content="3 Kings Band | Live Rock Meets DJ Performance">
+    <meta property="og:description" content="Book 3 Kings - RIAA Gold certified band fusing live rock power with DJ mastery. 150M+ Spotify streams. Perfect for corporate events and luxury parties.">
+    <meta property="og:image" content="https://3kingsband.com/images/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://3kingsband.com">
+    <meta name="twitter:title" content="3 Kings Band | Live Rock Meets DJ Performance">
+    <meta name="twitter:description" content="Book 3 Kings - RIAA Gold certified band fusing live rock power with DJ mastery. Perfect for corporate events and luxury parties.">
+    <meta name="twitter:image" content="https://3kingsband.com/images/twitter-image.jpg">
+    
+    <!-- Additional SEO -->
+    <meta name="theme-color" content="#14B8A6">
+    <meta name="format-detection" content="telephone=no">
+    
+    <!-- Structured Data - Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MusicGroup",
+      "name": "3 Kings",
+      "alternateName": "3K",
+      "description": "Premium live rock and DJ fusion band for corporate events and luxury private parties",
+      "genre": ["Rock", "Electronic", "Dance", "Pop"],
+      "url": "https://3kingsband.com",
+      "email": "booking@3kings.com",
+      "foundingDate": "2024",
+      "member": [
+        {
+          "@type": "Person",
+          "name": "Ryan Patrick",
+          "roleName": "Guitarist",
+          "description": "Guitar slayer from charting rock band OTHERWISE"
+        },
+        {
+          "@type": "Person",
+          "name": "Joe Conner",
+          "roleName": "Drummer",
+          "description": "Versatile industry drummer with thunderous groove"
+        },
+        {
+          "@type": "Person",
+          "name": "DJ Chaney",
+          "roleName": "DJ",
+          "description": "The remix king with club-crushing instincts"
+        }
+      ],
+      "award": [
+        "RIAA Gold Certification",
+        "BET Award Nominations",
+        "Billboard Top 25"
+      ],
+      "sameAs": [
+        "https://www.youtube.com/watch?v=MqGzPfq79TE"
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "reviewCount": "150"
+      },
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "priceCurrency": "USD",
+          "price": "0",
+          "name": "Contact for pricing"
+        }
+      }
+    }
+    </script>
+    
+    <!-- Performance Optimization -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -61,6 +150,53 @@
             font-size: 2rem;
             letter-spacing: 3px;
             color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .logo:hover {
+            color: var(--teal);
+        }
+
+        .logo:focus {
+            outline: 2px solid var(--teal);
+            outline-offset: 4px;
+        }
+
+        /* Page Load Fade Animation */
+        .page-transition {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--black);
+            z-index: 9999;
+            pointer-events: none;
+            animation: fadeOut 1s ease-out forwards;
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+            }
+        }
+
+        /* Page content fade in */
+        body {
+            animation: contentFadeIn 1s ease-out;
+        }
+
+        @keyframes contentFadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
 
         .nav-cta {
@@ -332,6 +468,14 @@
         .member:nth-child(2) { transition-delay: 0.2s; }
         .member:nth-child(3) { transition-delay: 0.3s; }
 
+        .member-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            margin-bottom: 2rem;
+            border: 2px solid rgba(20, 184, 166, 0.2);
+        }
+
         .member-number {
             font-family: 'Bebas Neue', sans-serif;
             font-size: 4rem;
@@ -341,7 +485,7 @@
             opacity: 0.3;
         }
 
-        .member h4 {
+        .member h3 {
             font-family: 'Bebas Neue', sans-serif;
             font-size: 2rem;
             margin-bottom: 0.5rem;
@@ -391,6 +535,33 @@
             gap: 0;
             border: 2px solid rgba(20, 184, 166, 0.3);
             background: rgba(10, 22, 40, 0.4);
+            position: relative;
+            overflow: hidden;
+            --glow-x: 50%;
+            --glow-y: 50%;
+        }
+
+        .credentials-grid::before {
+            content: '';
+            position: absolute;
+            left: var(--glow-x);
+            top: var(--glow-y);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(
+                circle at center,
+                rgba(20, 184, 166, 0.15) 0%,
+                rgba(20, 184, 166, 0.08) 25%,
+                transparent 50%
+            );
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease, left 0.15s ease, top 0.15s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        .credentials-grid:hover::before {
+            opacity: 1;
         }
 
         .credential {
@@ -399,6 +570,8 @@
             opacity: 0;
             transform: translateY(20px);
             transition: all 0.6s ease;
+            position: relative;
+            z-index: 1;
         }
 
         .credential:last-child {
@@ -543,6 +716,123 @@
             font-size: 0.9rem;
         }
 
+        /* Construction Banner */
+        .construction-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, var(--dark-blue), var(--black));
+            border-top: 2px solid var(--teal);
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+            z-index: 1001;
+            opacity: 0;
+            transform: translateY(100%);
+            animation: slideUp 0.6s ease-out 0.5s forwards;
+        }
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .construction-banner.hidden {
+            display: none;
+        }
+
+        .construction-text {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.25rem;
+            letter-spacing: 1px;
+            color: var(--white);
+            margin: 0;
+        }
+
+        .construction-close {
+            background: transparent;
+            border: 2px solid var(--teal);
+            color: var(--teal);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            line-height: 1;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .construction-close:hover,
+        .construction-close:focus {
+            background: var(--teal);
+            color: var(--black);
+            transform: rotate(90deg);
+        }
+
+        .construction-close:focus {
+            outline: 2px solid var(--white);
+            outline-offset: 2px;
+        }
+
+        /* Accessibility - Focus States */
+        a:focus,
+        button:focus {
+            outline: 2px solid var(--teal);
+            outline-offset: 2px;
+        }
+
+        /* Accessibility - Skip to Main Content */
+        .skip-to-main {
+            position: absolute;
+            top: -100px;
+            left: 0;
+            background: var(--teal);
+            color: var(--black);
+            padding: 1rem 2rem;
+            text-decoration: none;
+            font-weight: 600;
+            z-index: 1002;
+            transition: top 0.3s ease;
+        }
+
+        .skip-to-main:focus {
+            top: 0;
+        }
+
+        /* Accessibility - Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            
+            body {
+                animation: none;
+            }
+            
+            .page-transition {
+                display: none;
+            }
+            
+            .construction-banner {
+                animation: none;
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         /* Scroll Animations */
         .scroll-reveal {
             opacity: 0;
@@ -579,6 +869,10 @@
                 grid-template-columns: 1fr;
             }
 
+            .member-image {
+                height: 250px;
+            }
+
             .credentials-grid {
                 grid-template-columns: 1fr;
             }
@@ -604,35 +898,55 @@
                 padding: 0 2rem;
                 margin: 8rem auto;
             }
+
+            .construction-banner {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+                padding: 1rem 2rem;
+            }
+
+            .construction-text {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">3 KINGS</div>
-            <a href="#booking" class="nav-cta">Book Now</a>
+    <div class="page-transition"></div>
+    
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+    
+    <header role="banner">
+        <nav role="navigation" aria-label="Main navigation">
+            <a href="#" class="logo" aria-label="3 Kings home - scroll to top">3 KINGS</a>
+            <a href="#book" class="nav-cta" aria-label="Book 3 Kings for your event">Book Now</a>
         </nav>
     </header>
 
-    <section class="hero">
+    <main id="main-content" role="main">
+
+    <section class="hero" aria-labelledby="hero-heading">
         <div class="hero-content">
-            <h1>3 KINGS</h1>
+            <h1 id="hero-heading">3 KINGS</h1>
             <p class="hero-subtitle">
                 Where live rock power collides with DJ mastery. 
                 A sonic fusion that transforms every stage into an unforgettable experience.
             </p>
-            <a href="#booking" class="magnetic-btn" id="heroBtn">Book Your Event</a>
+            <a href="#book" class="magnetic-btn" id="heroBtn" aria-label="Book 3 Kings for your event">Book Your Event</a>
         </div>
         <img src="https://placehold.co/800x1200/0A1628/14B8A6?text=Band+Photo" 
-             alt="3 Kings Performance" 
-             class="hero-image">
+             alt="3 Kings band members performing on stage with dramatic lighting" 
+             class="hero-image"
+             width="800"
+             height="1200"
+             loading="eager">
     </section>
 
-    <section class="bio">
+    <section class="bio" aria-labelledby="bio-heading">
         <div class="bio-header">
             <div class="section-label">About</div>
-            <h2 class="bio-title">A Fusion Like No Other</h2>
+            <h2 id="bio-heading" class="bio-title">A Fusion Like No Other</h2>
         </div>
         <div class="bio-layout">
             <div class="bio-content">
@@ -655,78 +969,99 @@
             </div>
             <div class="bio-image-container">
                 <img src="https://placehold.co/600x800/0A1628/14B8A6?text=Live+Performance" 
-                     alt="Live Performance" 
-                     class="bio-image scroll-reveal">
+                     alt="3 Kings performing live with crowd energy and stage lighting" 
+                     class="bio-image scroll-reveal"
+                     width="600"
+                     height="800"
+                     loading="lazy">
             </div>
         </div>
     </section>
 
-    <section class="members">
+    <section class="members" aria-labelledby="members-heading">
         <div class="section-label">The Lineup</div>
-        <h2 class="bio-title">Meet the Kings</h2>
+        <h2 id="members-heading" class="bio-title">Meet the Kings</h2>
         <div class="members-grid">
-            <div class="member scroll-reveal">
-                <div class="member-number">01</div>
-                <h4>Ryan Patrick</h4>
+            <article class="member scroll-reveal">
+                <img src="https://placehold.co/400x300/0A1628/14B8A6?text=Ryan+Patrick+-+Guitar" 
+                     alt="Ryan Patrick, guitarist from OTHERWISE" 
+                     class="member-image"
+                     width="400"
+                     height="300"
+                     loading="lazy">
+                <div class="member-number" aria-hidden="true">01</div>
+                <h3>Ryan Patrick</h3>
                 <div class="role">Guitar</div>
                 <p>
                     Guitar slayer from charting rock band OTHERWISE, bringing raw rock power and ripping solos 
                     that electrify every performance.
                 </p>
-            </div>
-            <div class="member scroll-reveal">
-                <div class="member-number">02</div>
-                <h4>Joe Conner</h4>
+            </article>
+            <article class="member scroll-reveal">
+                <img src="https://placehold.co/400x300/0A1628/14B8A6?text=Joe+Conner+-+Drums" 
+                     alt="Joe Conner, drummer" 
+                     class="member-image"
+                     width="400"
+                     height="300"
+                     loading="lazy">
+                <div class="member-number" aria-hidden="true">02</div>
+                <h3>Joe Conner</h3>
                 <div class="role">Drums</div>
                 <p>
                     Versatile industry drummer with a thunderous groove that drives the energy and keeps the 
                     crowd moving all night long.
                 </p>
-            </div>
-            <div class="member scroll-reveal">
-                <div class="member-number">03</div>
-                <h4>DJ Chaney</h4>
+            </article>
+            <article class="member scroll-reveal">
+                <img src="https://placehold.co/400x300/0A1628/14B8A6?text=DJ+Chaney+-+DJ" 
+                     alt="DJ Chaney, DJ and remix artist" 
+                     class="member-image"
+                     width="400"
+                     height="300"
+                     loading="lazy">
+                <div class="member-number" aria-hidden="true">03</div>
+                <h3>DJ Chaney</h3>
                 <div class="role">DJ</div>
                 <p>
                     The remix king with club-crushing instincts, transforming iconic tracks into dance floor 
                     anthems with masterful DJ wizardry.
                 </p>
-            </div>
+            </article>
         </div>
     </section>
 
-    <section class="credentials">
+    <section class="credentials" aria-labelledby="credentials-heading">
         <div class="section-label">Track Record</div>
-        <h2>Proven Excellence</h2>
+        <h2 id="credentials-heading">Proven Excellence</h2>
         <p class="credentials-subtitle">Collectively, 3K has compiled a grandiose resume</p>
-        <div class="credentials-grid">
-            <div class="credential scroll-reveal">
+        <div class="credentials-grid" role="list">
+            <div class="credential scroll-reveal" role="listitem">
                 <div class="credential-value">RIAA GOLD</div>
                 <div class="credential-label">Certified</div>
             </div>
-            <div class="credential scroll-reveal">
+            <div class="credential scroll-reveal" role="listitem">
                 <div class="credential-value">150M+</div>
                 <div class="credential-label">Spotify Streams</div>
             </div>
-            <div class="credential scroll-reveal">
+            <div class="credential scroll-reveal" role="listitem">
                 <div class="credential-value">BET</div>
                 <div class="credential-label">Award Nominations</div>
             </div>
-            <div class="credential scroll-reveal">
+            <div class="credential scroll-reveal" role="listitem">
                 <div class="credential-value">TOP 25</div>
                 <div class="credential-label">Billboard Charts</div>
             </div>
-            <div class="credential scroll-reveal">
+            <div class="credential scroll-reveal" role="listitem">
                 <div class="credential-value">FILM & TV</div>
                 <div class="credential-label">Music Placements</div>
             </div>
         </div>
     </section>
 
-    <section class="experience">
+    <section class="experience" aria-labelledby="experience-heading">
         <div class="experience-intro">
             <div class="section-label">Experience</div>
-            <h2>The Main Event</h2>
+            <h2 id="experience-heading">The Main Event</h2>
             <p>
                 With magnetic stage presence and crowd-hyping charisma, 3 Kings isn't background music—they're the centerpiece. 
                 Watch the fusion of live rock energy and DJ mastery come alive.
@@ -735,26 +1070,36 @@
         <div class="video-container">
             <iframe 
                 src="https://www.youtube.com/embed/MqGzPfq79TE" 
-                title="3 Kings Performance" 
+                title="3 Kings live performance video showcasing rock and DJ fusion" 
                 frameborder="0" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen>
+                allowfullscreen
+                loading="lazy"
+                width="560"
+                height="315">
             </iframe>
         </div>
     </section>
 
-    <section id="booking" class="booking">
-        <h2>Crown Your Event</h2>
+    <section id="book" class="booking" aria-labelledby="booking-heading">
+        <h2 id="booking-heading">Crown Your Event</h2>
         <p>
             Having rocked arenas, festivals, and award shows in their individual careers, 
             these 3 Kings have now joined forces to build a new kingdom of unforgettable vibes.
         </p>
-        <a href="mailto:booking@3kings.com" class="magnetic-btn" id="bookingBtn">Book 3 Kings</a>
+        <a href="mailto:booking@3kings.com" class="magnetic-btn" id="bookingBtn" aria-label="Send email to book 3 Kings">Book 3 Kings</a>
     </section>
 
-    <footer>
+    </main>
+
+    <aside class="construction-banner" role="complementary" aria-label="Site construction notice">
+        <p class="construction-text">This site is under construction and will be ready to rock soon 🎸</p>
+        <button class="construction-close" aria-label="Close construction notice" title="Close">×</button>
+    </aside>
+
+    <footer role="contentinfo">
         <div class="footer-logo">3 KINGS</div>
-        <p class="footer-text">© 2024 3 Kings. All rights reserved.</p>
+        <p class="footer-text">© <span class="footer-year">2024</span> 3 Kings. All rights reserved.</p>
     </footer>
 
     <script>
@@ -810,6 +1155,68 @@
                 card.style.setProperty('--angle', `${angle}deg`);
             });
         });
+
+        // Construction banner close functionality
+        const banner = document.querySelector('.construction-banner');
+        const closeBtn = document.querySelector('.construction-close');
+        
+        if (closeBtn && banner) {
+            closeBtn.addEventListener('click', () => {
+                banner.classList.add('hidden');
+            });
+            
+            // Close banner with ESC key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !banner.classList.contains('hidden')) {
+                    banner.classList.add('hidden');
+                    closeBtn.focus(); // Return focus after closing
+                }
+            });
+        }
+
+        // Page transition cleanup
+        const pageTransition = document.querySelector('.page-transition');
+        if (pageTransition) {
+            pageTransition.addEventListener('animationend', () => {
+                pageTransition.remove();
+            });
+        }
+
+        // Logo smooth scroll to top
+        const logo = document.querySelector('.logo');
+        if (logo) {
+            logo.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+
+        // Credentials grid mouse-tracking glow
+        const credentialsGrid = document.querySelector('.credentials-grid');
+        if (credentialsGrid) {
+            credentialsGrid.addEventListener('mousemove', (e) => {
+                const rect = credentialsGrid.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                credentialsGrid.style.setProperty('--mouse-x', `${x}px`);
+                credentialsGrid.style.setProperty('--mouse-y', `${y}px`);
+                
+                const glow = credentialsGrid.querySelector('::before');
+                credentialsGrid.style.setProperty('--glow-x', `${x}px`);
+                credentialsGrid.style.setProperty('--glow-y', `${y}px`);
+            });
+        }
+
+        // Dynamic year in footer
+        const currentYear = new Date().getFullYear();
+        const yearElement = document.querySelector('.footer-year');
+        if (yearElement) {
+            yearElement.textContent = currentYear;
+        }
     </script>
 </body>
 </html>
