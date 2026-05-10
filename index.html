@@ -96,6 +96,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Preload critical hero image for faster LCP -->
+    <link rel="preload" href="media/3kings-hero.jpg" as="image" type="image/jpeg">
     <style>
         * {
             margin: 0;
@@ -248,6 +250,8 @@
             cursor: pointer;
             overflow: hidden;
             border-radius: 8px;
+            /* Performance: GPU acceleration for smooth interactions */
+            will-change: transform;
         }
 
         .nav-cta::before {
@@ -328,11 +332,11 @@
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(40px);
+                transform: translate3d(0, 40px, 0);
             }
             to {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translate3d(0, 0, 0);
             }
         }
 
@@ -411,6 +415,8 @@
             cursor: pointer;
             overflow: hidden;
             border-radius: 8px;
+            /* Performance: GPU acceleration for smooth interactions */
+            will-change: transform;
         }
 
         .magnetic-btn::before {
@@ -566,12 +572,21 @@
             z-index: 1;
         }
 
-        .bio-title {
+        /* Reusable Section Heading Styles */
+        .section-heading {
             font-family: 'Bebas Neue', sans-serif;
             font-size: clamp(3rem, 6vw, 6rem);
-            line-height: 0.95;
+            line-height: 1;
             margin-bottom: 2rem;
             letter-spacing: -1px;
+        }
+
+        .section-heading-xl {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(4rem, 8vw, 8rem);
+            line-height: 1;
+            margin-bottom: 2rem;
+            letter-spacing: -2px;
         }
 
         .bio-layout {
@@ -696,6 +711,10 @@
             box-shadow: 
                 0 10px 30px rgba(0, 0, 0, 0.5),
                 0 20px 60px rgba(0, 0, 0, 0.3);
+            /* Performance: Hint browser to optimize for transform/opacity changes */
+            will-change: transform, opacity;
+            /* Performance: Isolate paint/layout to this element */
+            contain: layout style paint;
         }
 
         .member::before {
@@ -792,14 +811,6 @@
             text-align: center;
         }
 
-        .credentials h2 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(3.5rem, 7vw, 6rem);
-            line-height: 0.9;
-            margin-bottom: 1rem;
-            letter-spacing: -2px;
-        }
-
         .credentials-subtitle {
             font-size: 1.25rem;
             color: var(--gray);
@@ -867,6 +878,9 @@
             transition: all 0.6s ease;
             position: relative;
             z-index: 1;
+            /* Performance: GPU acceleration for animations */
+            will-change: transform, opacity;
+            contain: layout style;
         }
 
         .credential:last-child {
@@ -916,13 +930,6 @@
             text-align: center;
             max-width: 800px;
             margin: 0 auto 6rem;
-        }
-
-        .experience-intro h2 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(3rem, 6vw, 6rem);
-            margin-bottom: 1.5rem;
-            letter-spacing: -1px;
         }
 
         .experience-intro p {
@@ -980,15 +987,6 @@
         @keyframes pulse {
             0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
             50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.8; }
-        }
-
-        .booking h2 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(4rem, 8vw, 8rem);
-            margin-bottom: 2rem;
-            letter-spacing: -2px;
-            position: relative;
-            z-index: 1;
         }
 
         .booking p {
@@ -1100,7 +1098,7 @@
         @keyframes slideUp {
             to {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translate3d(0, 0, 0);
             }
         }
 
@@ -1351,7 +1349,7 @@
     <section class="bio" aria-labelledby="bio-heading">
         <div class="bio-header">
             <div class="section-label">About</div>
-            <h2 id="bio-heading" class="bio-title">A Fusion Like No Other</h2>
+            <h2 id="bio-heading" class="section-heading">A Fusion Like No Other</h2>
         </div>
         <div class="bio-layout">
             <div class="bio-content">
@@ -1385,7 +1383,7 @@
 
     <section class="members" aria-labelledby="members-heading">
         <div class="section-label">The Lineup</div>
-        <h2 id="members-heading" class="bio-title">Meet the Kings</h2>
+        <h2 id="members-heading" class="section-heading">Meet the Kings</h2>
         <div class="members-grid">
             <article class="member scroll-reveal">
                 <img src="media/Ryan Patrick.webp" 
@@ -1434,7 +1432,7 @@
 
     <section class="credentials" aria-labelledby="credentials-heading">
         <div class="section-label">Track Record</div>
-        <h2 id="credentials-heading">Proven Excellence</h2>
+        <h2 id="credentials-heading" class="section-heading">Proven Excellence</h2>
         <p class="credentials-subtitle">Collectively, 3K has compiled a grandiose resume</p>
         <div class="credentials-grid" role="list">
             <div class="credential scroll-reveal" role="listitem">
@@ -1463,7 +1461,7 @@
     <section class="experience" aria-labelledby="experience-heading">
         <div class="experience-intro">
             <div class="section-label">Experience</div>
-            <h2 id="experience-heading">The Main Event</h2>
+            <h2 id="experience-heading" class="section-heading">The Main Event</h2>
             <p>
                 With magnetic stage presence and crowd-hyping charisma, 3 Kings isn't background music—they're the centerpiece. 
                 Watch the fusion of live rock energy and DJ mastery come alive.
@@ -1484,7 +1482,7 @@
     </section>
 
     <section id="book" class="booking" aria-labelledby="booking-heading">
-        <h2 id="booking-heading">Crown Your Event</h2>
+        <h2 id="booking-heading" class="section-heading-xl">Crown Your Event</h2>
         <p>
             Having rocked arenas, festivals, and award shows in their individual careers, 
             these 3 Kings have now joined forces to build a new kingdom of unforgettable vibes.
@@ -1516,7 +1514,33 @@
     </footer>
 
     <script>
-        // Scroll reveal animations
+        // Performance: Throttle function for expensive operations
+        function throttle(func, limit) {
+            let inThrottle;
+            return function(...args) {
+                if (!inThrottle) {
+                    func.apply(this, args);
+                    inThrottle = true;
+                    setTimeout(() => inThrottle = false, limit);
+                }
+            };
+        }
+
+        // Performance: RequestAnimationFrame wrapper for smooth animations
+        function smoothUpdate(callback) {
+            let ticking = false;
+            return function(e) {
+                if (!ticking) {
+                    requestAnimationFrame(() => {
+                        callback(e);
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            };
+        }
+
+        // Scroll reveal animations (using IntersectionObserver - already performant)
         const observerOptions = {
             threshold: 0.15,
             rootMargin: '0px 0px -100px 0px'
@@ -1526,6 +1550,8 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
+                    // Performance: Stop observing after reveal (one-time animation)
+                    observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
@@ -1534,14 +1560,13 @@
             observer.observe(el);
         });
 
-        // Magnetic cursor effect for buttons
+        // Magnetic cursor effect for buttons (optimized with RAF)
         const magneticButtons = document.querySelectorAll('.magnetic-btn, .nav-cta');
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         
         magneticButtons.forEach(button => {
-            button.addEventListener('mousemove', (e) => {
+            const handleMouseMove = smoothUpdate((e) => {
                 if (prefersReducedMotion) {
-                    // Only apply scale, no movement for users who prefer reduced motion
                     button.style.transform = 'scale(1.05)';
                     return;
                 }
@@ -1550,38 +1575,40 @@
                 const x = e.clientX - rect.left - rect.width / 2;
                 const y = e.clientY - rect.top - rect.height / 2;
                 
-                button.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px) scale(1.05)`;
+                // Performance: Use translate3d for GPU acceleration
+                button.style.transform = `translate3d(${x * 0.2}px, ${y * 0.2}px, 0) scale(1.05)`;
             });
             
+            button.addEventListener('mousemove', handleMouseMove, { passive: true });
+            
             button.addEventListener('mouseleave', () => {
-                button.style.transform = 'translate(0, 0) scale(1)';
-            });
+                button.style.transform = 'translate3d(0, 0, 0) scale(1)';
+            }, { passive: true });
         });
 
-        // Mouse-tracking border glow effect for member cards
+        // Mouse-tracking border glow effect for member cards (optimized with throttle)
         const memberCards = document.querySelectorAll('.member');
         
         memberCards.forEach(card => {
-            card.addEventListener('mousemove', (e) => {
+            const handleCardMove = throttle((e) => {
                 const rect = card.getBoundingClientRect();
                 const x = e.clientX - rect.left;
                 const y = e.clientY - rect.top;
-                
                 const centerX = rect.width / 2;
                 const centerY = rect.height / 2;
-                
                 const angle = Math.atan2(y - centerY, x - centerX) * (180 / Math.PI) + 180;
                 
                 card.style.setProperty('--angle', `${angle}deg`);
-            });
+            }, 16); // ~60fps throttle
+            
+            card.addEventListener('mousemove', handleCardMove, { passive: true });
         });
 
         // Construction banner close functionality
         const banner = document.querySelector('.construction-banner');
         const closeBtn = document.querySelector('.construction-close');
         
-        // Check if banner was previously dismissed
-        if (localStorage.getItem('constructionBannerDismissed') === 'true') {
+        if (banner && localStorage.getItem('constructionBannerDismissed') === 'true') {
             banner.classList.add('hidden');
         }
         
@@ -1591,17 +1618,16 @@
                 localStorage.setItem('constructionBannerDismissed', 'true');
             });
             
-            // Close banner with ESC key
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape' && !banner.classList.contains('hidden')) {
                     banner.classList.add('hidden');
                     localStorage.setItem('constructionBannerDismissed', 'true');
-                    closeBtn.focus(); // Return focus after closing
+                    closeBtn.focus();
                 }
             });
         }
 
-        // Page transition cleanup
+        // Page transition cleanup (remove from DOM after animation)
         const pageTransition = document.querySelector('.page-transition');
         if (pageTransition) {
             pageTransition.addEventListener('animationend', () => {
@@ -1614,35 +1640,31 @@
         if (logo) {
             logo.addEventListener('click', (e) => {
                 e.preventDefault();
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         }
 
-        // Credentials grid mouse-tracking glow
+        // Credentials grid mouse-tracking glow (optimized with throttle)
         const credentialsGrid = document.querySelector('.credentials-grid');
         if (credentialsGrid) {
-            credentialsGrid.addEventListener('mousemove', (e) => {
+            const handleGridMove = throttle((e) => {
                 const rect = credentialsGrid.getBoundingClientRect();
                 const x = e.clientX - rect.left;
                 const y = e.clientY - rect.top;
                 
                 credentialsGrid.style.setProperty('--mouse-x', `${x}px`);
                 credentialsGrid.style.setProperty('--mouse-y', `${y}px`);
-                
-                const glow = credentialsGrid.querySelector('::before');
                 credentialsGrid.style.setProperty('--glow-x', `${x}px`);
                 credentialsGrid.style.setProperty('--glow-y', `${y}px`);
-            });
+            }, 16); // ~60fps throttle
+            
+            credentialsGrid.addEventListener('mousemove', handleGridMove, { passive: true });
         }
 
         // Dynamic year in footer
-        const currentYear = new Date().getFullYear();
         const yearElement = document.querySelector('.footer-year');
         if (yearElement) {
-            yearElement.textContent = currentYear;
+            yearElement.textContent = new Date().getFullYear();
         }
 
         // Disabled button click prevention
