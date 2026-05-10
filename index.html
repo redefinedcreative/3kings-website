@@ -95,7 +95,7 @@
     <!-- Performance Optimization -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -109,7 +109,7 @@
             --teal: #14B8A6;
             --white: #FFFFFF;
             --off-white: #F5F5F5;
-            --gray: #6B7280;
+            --gray: #8B95A5;
             --angle: 0deg;
         }
 
@@ -206,7 +206,7 @@
             text-decoration: none;
             font-family: 'Bebas Neue', sans-serif;
             font-size: 1.25rem;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
             position: relative;
             cursor: pointer;
@@ -298,7 +298,7 @@
             padding: 1.5rem 3.5rem;
             font-family: 'Bebas Neue', sans-serif;
             font-size: 1.5rem;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             color: var(--black);
             background: var(--teal);
             text-decoration: none;
@@ -334,9 +334,9 @@
         /* Disabled/Deactivated Button State */
         .magnetic-btn.disabled,
         .nav-cta.disabled {
-            background: rgba(107, 114, 128, 0.15);
-            color: rgba(107, 114, 128, 0.6);
-            border: 2px solid rgba(107, 114, 128, 0.3);
+            background: rgba(107, 114, 128, 0.25);
+            color: rgba(107, 114, 128, 0.8);
+            border: 2px solid rgba(107, 114, 128, 0.4);
             cursor: not-allowed;
             pointer-events: auto;
             position: relative;
@@ -452,7 +452,7 @@
             line-height: 1.8;
             color: var(--gray);
             margin-bottom: 2rem;
-            text-align: center;
+            text-align: left;
         }
 
         .bio-image-container {
@@ -1222,9 +1222,16 @@
 
         // Magnetic cursor effect for buttons
         const magneticButtons = document.querySelectorAll('.magnetic-btn, .nav-cta');
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         
         magneticButtons.forEach(button => {
             button.addEventListener('mousemove', (e) => {
+                if (prefersReducedMotion) {
+                    // Only apply scale, no movement for users who prefer reduced motion
+                    button.style.transform = 'scale(1.05)';
+                    return;
+                }
+                
                 const rect = button.getBoundingClientRect();
                 const x = e.clientX - rect.left - rect.width / 2;
                 const y = e.clientY - rect.top - rect.height / 2;
@@ -1259,15 +1266,22 @@
         const banner = document.querySelector('.construction-banner');
         const closeBtn = document.querySelector('.construction-close');
         
+        // Check if banner was previously dismissed
+        if (localStorage.getItem('constructionBannerDismissed') === 'true') {
+            banner.classList.add('hidden');
+        }
+        
         if (closeBtn && banner) {
             closeBtn.addEventListener('click', () => {
                 banner.classList.add('hidden');
+                localStorage.setItem('constructionBannerDismissed', 'true');
             });
             
             // Close banner with ESC key
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape' && !banner.classList.contains('hidden')) {
                     banner.classList.add('hidden');
+                    localStorage.setItem('constructionBannerDismissed', 'true');
                     closeBtn.focus(); // Return focus after closing
                 }
             });
