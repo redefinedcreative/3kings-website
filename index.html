@@ -21,6 +21,7 @@
             --white: #FFFFFF;
             --off-white: #F5F5F5;
             --gray: #6B7280;
+            --angle: 0deg;
         }
 
         html {
@@ -194,59 +195,36 @@
             box-shadow: 0 20px 60px rgba(20, 184, 166, 0.4);
         }
 
-        /* Bio Section - Overlapping */
+        /* Bio Section - Centered with Breakout Image */
         .bio {
-            max-width: 1600px;
+            max-width: 1200px;
             margin: 10rem auto;
             padding: 0 4rem;
             position: relative;
         }
 
-        .bio-layout {
-            display: grid;
-            grid-template-columns: 0.8fr 1.2fr;
-            gap: 6rem;
-            align-items: start;
-        }
-
-        .bio-image-container {
-            position: sticky;
-            top: 150px;
-        }
-
-        .bio-image {
-            width: 100%;
-            height: 600px;
-            object-fit: cover;
-            opacity: 0;
-            transform: translateX(-50px);
-            transition: all 1s ease-out;
-        }
-
-        .bio-image.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .bio-content {
-            padding-top: 8rem;
-        }
-
-        .section-label {
-            font-size: 0.9rem;
-            letter-spacing: 3px;
-            color: var(--teal);
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
+        .bio-header {
+            text-align: center;
+            margin-bottom: 4rem;
         }
 
         .bio-title {
             font-family: 'Bebas Neue', sans-serif;
             font-size: clamp(3rem, 6vw, 6rem);
             line-height: 0.95;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
             letter-spacing: -1px;
+        }
+
+        .bio-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+        }
+
+        .bio-content {
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         .bio-text {
@@ -254,6 +232,37 @@
             line-height: 1.8;
             color: var(--gray);
             margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .bio-image-container {
+            width: calc(100% + 8rem);
+            margin-left: -4rem;
+            margin-top: 3rem;
+        }
+
+        .bio-image {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s ease-out;
+        }
+
+        .bio-image.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Global Utility Styles */
+        .section-label {
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+            color: var(--teal);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
         }
 
         .highlight {
@@ -282,6 +291,36 @@
             transition: all 0.4s ease;
             opacity: 0;
             transform: translateY(30px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .member::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            background: conic-gradient(
+                from var(--angle),
+                transparent 70%,
+                var(--teal) 80%,
+                transparent 90%
+            );
+            opacity: 0;
+            transition: opacity 0.15s ease;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .member::after {
+            content: '';
+            position: absolute;
+            inset: 1px;
+            background: var(--dark-blue);
+            z-index: -1;
+        }
+
+        .member:hover::before {
+            opacity: 1;
         }
 
         .member.visible {
@@ -292,11 +331,6 @@
         .member:nth-child(1) { transition-delay: 0.1s; }
         .member:nth-child(2) { transition-delay: 0.2s; }
         .member:nth-child(3) { transition-delay: 0.3s; }
-
-        .member:hover {
-            border-color: var(--teal);
-            transform: translateY(-5px);
-        }
 
         .member-number {
             font-family: 'Bebas Neue', sans-serif;
@@ -329,38 +363,50 @@
             font-size: 0.95rem;
         }
 
-        /* Credentials - Asymmetric */
+        /* Credentials - Centered Grid */
         .credentials {
-            max-width: 1600px;
+            max-width: 1200px;
             margin: 15rem auto;
             padding: 0 4rem;
+            text-align: center;
         }
 
-        .credentials-layout {
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 8rem;
-            align-items: center;
-        }
-
-        .credentials-content h2 {
+        .credentials h2 {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(3.5rem, 7vw, 7rem);
+            font-size: clamp(3.5rem, 7vw, 6rem);
             line-height: 0.9;
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
             letter-spacing: -2px;
+        }
+
+        .credentials-subtitle {
+            font-size: 1.25rem;
+            color: var(--gray);
+            margin-bottom: 4rem;
         }
 
         .credentials-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 3rem;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0;
+            border: 2px solid rgba(20, 184, 166, 0.3);
+            background: rgba(10, 22, 40, 0.4);
         }
 
         .credential {
+            padding: 3rem 2rem;
+            border-right: 1px solid rgba(20, 184, 166, 0.2);
             opacity: 0;
             transform: translateY(20px);
             transition: all 0.6s ease;
+        }
+
+        .credential:last-child {
+            border-right: none;
+        }
+
+        .credential:hover {
+            background: rgba(20, 184, 166, 0.05);
         }
 
         .credential.visible {
@@ -376,68 +422,40 @@
 
         .credential-value {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 3.5rem;
+            font-size: 2.5rem;
             color: var(--teal);
             margin-bottom: 0.5rem;
             line-height: 1;
         }
 
         .credential-label {
-            font-size: 1rem;
+            font-size: 0.9rem;
             color: var(--gray);
             font-weight: 500;
         }
 
-        /* Experience Section - Full Bleed */
+        /* Experience + Video Combined Section */
         .experience {
-            margin: 15rem 0;
-            position: relative;
-        }
-
-        .experience-content {
-            max-width: 1600px;
-            margin: 0 auto;
-            padding: 0 4rem 4rem;
-        }
-
-        .experience h2 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(3rem, 6vw, 6rem);
-            margin-bottom: 2rem;
-            letter-spacing: -1px;
-        }
-
-        .experience-image {
-            width: 100%;
-            height: 700px;
-            object-fit: cover;
-            margin-top: 4rem;
-        }
-
-        /* Video Section - Offset */
-        .video-section {
-            max-width: 1600px;
             margin: 15rem auto;
+            max-width: 1400px;
             padding: 0 4rem;
         }
 
-        .video-layout {
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 6rem;
-            align-items: center;
+        .experience-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 6rem;
         }
 
-        .video-content h2 {
+        .experience-intro h2 {
             font-family: 'Bebas Neue', sans-serif;
             font-size: clamp(3rem, 6vw, 6rem);
-            line-height: 0.95;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             letter-spacing: -1px;
         }
 
-        .video-content p {
-            font-size: 1.15rem;
+        .experience-intro p {
+            font-size: 1.25rem;
             color: var(--gray);
             line-height: 1.8;
         }
@@ -448,7 +466,7 @@
             height: 0;
             overflow: hidden;
             background: var(--dark-blue);
-            border: 1px solid rgba(20, 184, 166, 0.2);
+            border: 2px solid rgba(20, 184, 166, 0.3);
         }
 
         .video-container iframe {
@@ -548,24 +566,30 @@
                 height: 500px;
             }
 
-            .bio-layout,
-            .credentials-layout,
-            .video-layout {
-                grid-template-columns: 1fr;
-                gap: 4rem;
-            }
-
             .bio-image-container {
-                position: relative;
-                top: 0;
+                width: 100%;
+                margin-left: 0;
             }
 
-            .bio-content {
-                padding-top: 0;
+            .bio-image {
+                height: 400px;
             }
 
             .members-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .credentials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .credential {
+                border-right: none;
+                border-bottom: 1px solid rgba(20, 184, 166, 0.2);
+            }
+
+            .credential:last-child {
+                border-bottom: none;
             }
 
             nav {
@@ -575,14 +599,10 @@
             .bio,
             .members,
             .credentials,
-            .video-section,
+            .experience,
             .booking {
                 padding: 0 2rem;
                 margin: 8rem auto;
-            }
-
-            .experience-content {
-                padding: 0 2rem 4rem;
             }
         }
     </style>
@@ -610,15 +630,12 @@
     </section>
 
     <section class="bio">
+        <div class="bio-header">
+            <div class="section-label">About</div>
+            <h2 class="bio-title">A Fusion Like No Other</h2>
+        </div>
         <div class="bio-layout">
-            <div class="bio-image-container">
-                <img src="https://placehold.co/600x800/0A1628/14B8A6?text=Live+Performance" 
-                     alt="Live Performance" 
-                     class="bio-image scroll-reveal">
-            </div>
             <div class="bio-content">
-                <div class="section-label">About</div>
-                <h2 class="bio-title">A Fusion Like No Other</h2>
                 <p class="bio-text">
                     3 Kings is not just a band—it's a royal decree for unforgettable nights. Blending the raw power 
                     of live drums, ripping guitar solos, and masterclass DJ wizardry, this trio of elite performers 
@@ -635,6 +652,11 @@
                     power of a rock show. Whether it's a high-end corporate event or a luxury private party, 3K knows how to 
                     make the ladies dance and the gents open the bar tab.
                 </p>
+            </div>
+            <div class="bio-image-container">
+                <img src="https://placehold.co/600x800/0A1628/14B8A6?text=Live+Performance" 
+                     alt="Live Performance" 
+                     class="bio-image scroll-reveal">
             </div>
         </div>
     </section>
@@ -674,68 +696,50 @@
     </section>
 
     <section class="credentials">
-        <div class="credentials-layout">
-            <div class="credentials-content">
-                <div class="section-label">Track Record</div>
-                <h2>Proven Excellence</h2>
+        <div class="section-label">Track Record</div>
+        <h2>Proven Excellence</h2>
+        <p class="credentials-subtitle">Collectively, 3K has compiled a grandiose resume</p>
+        <div class="credentials-grid">
+            <div class="credential scroll-reveal">
+                <div class="credential-value">RIAA GOLD</div>
+                <div class="credential-label">Certified</div>
             </div>
-            <div class="credentials-grid">
-                <div class="credential scroll-reveal">
-                    <div class="credential-value">RIAA GOLD</div>
-                    <div class="credential-label">Certified</div>
-                </div>
-                <div class="credential scroll-reveal">
-                    <div class="credential-value">150M+</div>
-                    <div class="credential-label">Spotify Streams</div>
-                </div>
-                <div class="credential scroll-reveal">
-                    <div class="credential-value">BET</div>
-                    <div class="credential-label">Award Nominations</div>
-                </div>
-                <div class="credential scroll-reveal">
-                    <div class="credential-value">TOP 25</div>
-                    <div class="credential-label">Billboard Charts</div>
-                </div>
-                <div class="credential scroll-reveal">
-                    <div class="credential-value">FILM & TV</div>
-                    <div class="credential-label">Music Placements</div>
-                </div>
+            <div class="credential scroll-reveal">
+                <div class="credential-value">150M+</div>
+                <div class="credential-label">Spotify Streams</div>
+            </div>
+            <div class="credential scroll-reveal">
+                <div class="credential-value">BET</div>
+                <div class="credential-label">Award Nominations</div>
+            </div>
+            <div class="credential scroll-reveal">
+                <div class="credential-value">TOP 25</div>
+                <div class="credential-label">Billboard Charts</div>
+            </div>
+            <div class="credential scroll-reveal">
+                <div class="credential-value">FILM & TV</div>
+                <div class="credential-label">Music Placements</div>
             </div>
         </div>
     </section>
 
     <section class="experience">
-        <div class="experience-content">
+        <div class="experience-intro">
             <div class="section-label">Experience</div>
             <h2>The Main Event</h2>
-            <p style="font-size: 1.15rem; color: var(--gray); max-width: 700px;">
-                With magnetic stage presence and crowd-hyping charisma, 3 Kings isn't background music—they're the centerpiece.
+            <p>
+                With magnetic stage presence and crowd-hyping charisma, 3 Kings isn't background music—they're the centerpiece. 
+                Watch the fusion of live rock energy and DJ mastery come alive.
             </p>
         </div>
-        <img src="https://placehold.co/1600x800/0A1628/14B8A6?text=High-End+Event+Performance" 
-             alt="High-End Event Performance" 
-             class="experience-image scroll-reveal">
-    </section>
-
-    <section class="video-section">
-        <div class="video-layout">
-            <div class="video-content">
-                <div class="section-label">Watch</div>
-                <h2>See 3 Kings in Action</h2>
-                <p>
-                    Experience the fusion of live rock energy and DJ mastery. 
-                    Watch as renowned hits transform into dance floor anthems.
-                </p>
-            </div>
-            <div class="video-container">
-                <iframe 
-                    src="https://www.youtube.com/embed/MqGzPfq79TE" 
-                    title="3 Kings Performance" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
-            </div>
+        <div class="video-container">
+            <iframe 
+                src="https://www.youtube.com/embed/MqGzPfq79TE" 
+                title="3 Kings Performance" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
         </div>
     </section>
 
@@ -786,6 +790,24 @@
             
             button.addEventListener('mouseleave', () => {
                 button.style.transform = 'translate(0, 0) scale(1)';
+            });
+        });
+
+        // Mouse-tracking border glow effect for member cards
+        const memberCards = document.querySelectorAll('.member');
+        
+        memberCards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const angle = Math.atan2(y - centerY, x - centerX) * (180 / Math.PI) + 180;
+                
+                card.style.setProperty('--angle', `${angle}deg`);
             });
         });
     </script>
