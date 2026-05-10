@@ -105,7 +105,8 @@
 
         :root {
             --black: #000000;
-            --dark-blue: #0A1628;
+            --dark-gray: #1A1A1A;
+            --dark-teal: #0F2725;
             --teal: #14B8A6;
             --white: #FFFFFF;
             --off-white: #F5F5F5;
@@ -246,6 +247,7 @@
             position: relative;
             cursor: pointer;
             overflow: hidden;
+            border-radius: 8px;
         }
 
         .nav-cta::before {
@@ -358,6 +360,7 @@
             animation: fadeIn 1.2s ease-out 0.3s backwards;
             transition: filter 0.3s ease;
             z-index: 1;
+            border-radius: 8px;
         }
 
         .hero-image:hover {
@@ -385,6 +388,7 @@
             transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
             cursor: pointer;
             overflow: hidden;
+            border-radius: 8px;
         }
 
         .magnetic-btn::before {
@@ -464,10 +468,10 @@
             bottom: calc(100% + 1.5rem);
             left: 50%;
             transform: translateX(-50%);
-            background: var(--dark-blue);
+            background: var(--dark-gray);
             color: var(--white);
             padding: 0.75rem 1.25rem;
-            border-radius: 4px;
+            border-radius: 6px;
             font-family: 'Space Grotesk', sans-serif;
             font-size: 0.9rem;
             font-weight: 400;
@@ -494,7 +498,7 @@
             left: 50%;
             transform: translateX(-50%);
             border: 6px solid transparent;
-            border-top-color: var(--dark-blue);
+            border-top-color: var(--dark-gray);
         }
 
         /* Bio Section - Centered with Breakout Image */
@@ -582,6 +586,7 @@
             opacity: 0;
             transform: translateY(30px);
             transition: all 1s ease-out;
+            border-radius: 8px;
         }
 
         .bio-image:hover {
@@ -657,14 +662,14 @@
         }
 
         .member {
-            background: var(--dark-blue);
+            background: var(--black);
             padding: 3rem 2.5rem;
-            border: 1px solid rgba(20, 184, 166, 0.1);
+            border: 2px solid rgba(20, 184, 166, 0.3);
+            border-radius: 8px;
             transition: all 0.4s ease;
             opacity: 0;
             transform: translateY(30px);
             position: relative;
-            overflow: hidden;
             box-shadow: 
                 0 10px 30px rgba(0, 0, 0, 0.5),
                 0 20px 60px rgba(0, 0, 0, 0.3);
@@ -683,15 +688,17 @@
             opacity: 0;
             transition: opacity 0.15s ease;
             pointer-events: none;
-            z-index: -1;
+            z-index: -2;
+            border-radius: 10px;
         }
 
         .member::after {
             content: '';
             position: absolute;
-            inset: 1px;
-            background: var(--dark-blue);
+            inset: 2px;
+            background: var(--black);
             z-index: -1;
+            border-radius: 7px;
         }
 
         .member:hover::before {
@@ -700,10 +707,11 @@
 
         .member:hover {
             transform: translateY(-5px);
+            border-color: rgba(20, 184, 166, 0.6);
             box-shadow: 
                 0 15px 40px rgba(0, 0, 0, 0.6),
                 0 25px 80px rgba(0, 0, 0, 0.4),
-                0 0 60px rgba(20, 184, 166, 0.2);
+                0 0 80px rgba(20, 184, 166, 0.4);
         }
 
         .member.visible {
@@ -722,6 +730,7 @@
             margin-bottom: 2rem;
             border: 2px solid rgba(20, 184, 166, 0.2);
             transition: filter 0.3s ease;
+            border-radius: 10px;
         }
 
         .member-image:hover {
@@ -788,6 +797,7 @@
             grid-template-columns: repeat(5, 1fr);
             gap: 0;
             border: 2px solid rgba(20, 184, 166, 0.3);
+            border-radius: 6px;
             background: 
                 linear-gradient(
                     135deg,
@@ -912,8 +922,9 @@
             padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
-            background: var(--dark-blue);
+            background: var(--dark-gray);
             border: 2px solid rgba(20, 184, 166, 0.3);
+            border-radius: 8px;
         }
 
         .video-container iframe {
@@ -978,22 +989,78 @@
 
         /* Footer */
         footer {
-            background: var(--dark-blue);
-            padding: 4rem;
-            text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            background: linear-gradient(to bottom, var(--black) 0%, var(--dark-gray) 100%);
+            padding: 3rem 4rem;
+            border-top: 1px solid rgba(20, 184, 166, 0.2);
+            position: relative;
+            margin-top: 10rem;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 1px;
+            background: linear-gradient(
+                to right,
+                transparent,
+                var(--teal),
+                transparent
+            );
+        }
+
+        .footer-content {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .footer-left {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
         }
 
         .footer-logo {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 2rem;
-            letter-spacing: 3px;
-            margin-bottom: 1rem;
+            font-size: 2.5rem;
+            letter-spacing: 4px;
+            color: var(--white);
+            line-height: 1;
+        }
+
+        .footer-tagline {
+            font-size: 0.9rem;
+            color: var(--gray);
+            font-weight: 300;
+        }
+
+        .footer-right {
+            display: flex;
+            align-items: center;
         }
 
         .footer-text {
             color: var(--gray);
             font-size: 0.9rem;
+            font-weight: 300;
+            margin: 0;
+        }
+
+        .footer-text a {
+            color: var(--teal);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-text a:hover {
+            color: var(--white);
         }
 
         /* Construction Banner */
@@ -1002,8 +1069,9 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(135deg, var(--dark-blue), var(--black));
+            background: linear-gradient(135deg, var(--dark-gray), var(--black));
             border-top: 2px solid var(--teal);
+            border-radius: 8px 8px 0 0;
             padding: 1.5rem 2rem;
             display: flex;
             justify-content: space-between;
@@ -1203,6 +1271,20 @@
             .construction-text {
                 font-size: 1rem;
             }
+
+            footer {
+                padding: 2rem;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .footer-left {
+                align-items: center;
+            }
         }
     </style>
 </head>
@@ -1240,8 +1322,8 @@
             -->
             <a href="#book" class="magnetic-btn" id="heroBtn" aria-label="Book 3 Kings for your event">Book Your Event</a>
         </div>
-        <img src="https://placehold.co/800x1200/0A1628/14B8A6?text=Band+Photo" 
-             alt="3 Kings band members performing on stage with dramatic lighting" 
+        <img src="media/3kings-hero.jpg" 
+             alt="3 Kings band members in sophisticated library setting with leather chairs and red carpet" 
              class="hero-image"
              width="800"
              height="1200"
@@ -1273,8 +1355,8 @@
                 </p>
             </div>
             <div class="bio-image-container">
-                <img src="https://placehold.co/600x800/0A1628/14B8A6?text=Live+Performance" 
-                     alt="3 Kings performing live with crowd energy and stage lighting" 
+                <img src="media/3kings-bio.jpg" 
+                     alt="3 Kings performing with warm stage lighting and brick wall backdrop" 
                      class="bio-image scroll-reveal"
                      width="600"
                      height="800"
@@ -1407,8 +1489,15 @@
     </aside>
 
     <footer role="contentinfo">
-        <div class="footer-logo">3 KINGS</div>
-        <p class="footer-text">© <span class="footer-year">2024</span> 3 Kings. All rights reserved.</p>
+        <div class="footer-content">
+            <div class="footer-left">
+                <div class="footer-logo">3 KINGS</div>
+                <p class="footer-tagline">Live Rock Meets DJ Mastery</p>
+            </div>
+            <div class="footer-right">
+                <p class="footer-text">© <span class="footer-year">2024</span> 3 Kings. All rights reserved.</p>
+            </div>
+        </div>
     </footer>
 
     <script>
