@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3 Kings | Live Rock Meets DJ Performance</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --black: #000000;
+            --dark-blue: #0A1628;
+            --teal: #14B8A6;
+            --white: #FFFFFF;
+            --off-white: #F5F5F5;
+            --gray: #6B7280;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        nav {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 1.5rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            letter-spacing: 3px;
+            color: var(--white);
+        }
+
+        .nav-cta {
+            background: var(--teal);
+            color: var(--black);
+            padding: 0.75rem 2rem;
+            text-decoration: none;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.25rem;
+            letter-spacing: 2px;
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .nav-cta::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .nav-cta:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .nav-cta:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 60px rgba(20, 184, 166, 0.4);
+        }
+
+        /* Hero Section - Asymmetric */
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            align-items: center;
+            padding: 8rem 4rem 4rem;
+            max-width: 1600px;
+            margin: 0 auto;
+            gap: 4rem;
+        }
+
+        .hero-content {
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(4rem, 10vw, 9rem);
+            line-height: 0.9;
+            margin-bottom: 2rem;
+            letter-spacing: -2px;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.5rem, 2.5vw, 2rem);
+            font-weight: 300;
+            margin-bottom: 3rem;
+            color: var(--gray);
+            max-width: 600px;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 700px;
+            object-fit: cover;
+            position: relative;
+            animation: fadeIn 1.2s ease-out 0.3s backwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Magnetic Button */
+        .magnetic-btn {
+            display: inline-block;
+            padding: 1.5rem 3.5rem;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            color: var(--black);
+            background: var(--teal);
+            text-decoration: none;
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .magnetic-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .magnetic-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .magnetic-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 60px rgba(20, 184, 166, 0.4);
+        }
+
+        /* Bio Section - Overlapping */
+        .bio {
+            max-width: 1600px;
+            margin: 10rem auto;
+            padding: 0 4rem;
+            position: relative;
+        }
+
+        .bio-layout {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 6rem;
+            align-items: start;
+        }
+
+        .bio-image-container {
+            position: sticky;
+            top: 150px;
+        }
+
+        .bio-image {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 1s ease-out;
+        }
+
+        .bio-image.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .bio-content {
+            padding-top: 8rem;
+        }
+
+        .section-label {
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+            color: var(--teal);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .bio-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3rem, 6vw, 6rem);
+            line-height: 0.95;
+            margin-bottom: 3rem;
+            letter-spacing: -1px;
+        }
+
+        .bio-text {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--gray);
+            margin-bottom: 2rem;
+        }
+
+        .highlight {
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        /* Members Section - Bento Grid */
+        .members {
+            max-width: 1600px;
+            margin: 10rem auto;
+            padding: 0 4rem;
+        }
+
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .member {
+            background: var(--dark-blue);
+            padding: 3rem 2.5rem;
+            border: 1px solid rgba(20, 184, 166, 0.1);
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .member.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .member:nth-child(1) { transition-delay: 0.1s; }
+        .member:nth-child(2) { transition-delay: 0.2s; }
+        .member:nth-child(3) { transition-delay: 0.3s; }
+
+        .member:hover {
+            border-color: var(--teal);
+            transform: translateY(-5px);
+        }
+
+        .member-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 4rem;
+            color: var(--teal);
+            line-height: 1;
+            margin-bottom: 1rem;
+            opacity: 0.3;
+        }
+
+        .member h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        .member .role {
+            color: var(--teal);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+        }
+
+        .member p {
+            color: var(--gray);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        /* Credentials - Asymmetric */
+        .credentials {
+            max-width: 1600px;
+            margin: 15rem auto;
+            padding: 0 4rem;
+        }
+
+        .credentials-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 8rem;
+            align-items: center;
+        }
+
+        .credentials-content h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3.5rem, 7vw, 7rem);
+            line-height: 0.9;
+            margin-bottom: 2rem;
+            letter-spacing: -2px;
+        }
+
+        .credentials-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+        }
+
+        .credential {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .credential.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .credential:nth-child(1) { transition-delay: 0.1s; }
+        .credential:nth-child(2) { transition-delay: 0.2s; }
+        .credential:nth-child(3) { transition-delay: 0.3s; }
+        .credential:nth-child(4) { transition-delay: 0.4s; }
+        .credential:nth-child(5) { transition-delay: 0.5s; }
+
+        .credential-value {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3.5rem;
+            color: var(--teal);
+            margin-bottom: 0.5rem;
+            line-height: 1;
+        }
+
+        .credential-label {
+            font-size: 1rem;
+            color: var(--gray);
+            font-weight: 500;
+        }
+
+        /* Experience Section - Full Bleed */
+        .experience {
+            margin: 15rem 0;
+            position: relative;
+        }
+
+        .experience-content {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 4rem 4rem;
+        }
+
+        .experience h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3rem, 6vw, 6rem);
+            margin-bottom: 2rem;
+            letter-spacing: -1px;
+        }
+
+        .experience-image {
+            width: 100%;
+            height: 700px;
+            object-fit: cover;
+            margin-top: 4rem;
+        }
+
+        /* Video Section - Offset */
+        .video-section {
+            max-width: 1600px;
+            margin: 15rem auto;
+            padding: 0 4rem;
+        }
+
+        .video-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .video-content h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3rem, 6vw, 6rem);
+            line-height: 0.95;
+            margin-bottom: 2rem;
+            letter-spacing: -1px;
+        }
+
+        .video-content p {
+            font-size: 1.15rem;
+            color: var(--gray);
+            line-height: 1.8;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            background: var(--dark-blue);
+            border: 1px solid rgba(20, 184, 166, 0.2);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Booking Section - Centered Impact */
+        .booking {
+            max-width: 1200px;
+            margin: 15rem auto;
+            padding: 8rem 4rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .booking::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(20, 184, 166, 0.15) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+            50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.8; }
+        }
+
+        .booking h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(4rem, 8vw, 8rem);
+            margin-bottom: 2rem;
+            letter-spacing: -2px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .booking p {
+            font-size: 1.25rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto 4rem;
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-blue);
+            padding: 4rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+        }
+
+        .footer-text {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Scroll Animations */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease-out;
+        }
+
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 6rem 2rem 4rem;
+            }
+
+            .hero-image {
+                height: 500px;
+            }
+
+            .bio-layout,
+            .credentials-layout,
+            .video-layout {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+            }
+
+            .bio-image-container {
+                position: relative;
+                top: 0;
+            }
+
+            .bio-content {
+                padding-top: 0;
+            }
+
+            .members-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                padding: 1.5rem 2rem;
+            }
+
+            .bio,
+            .members,
+            .credentials,
+            .video-section,
+            .booking {
+                padding: 0 2rem;
+                margin: 8rem auto;
+            }
+
+            .experience-content {
+                padding: 0 2rem 4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">3 KINGS</div>
+            <a href="#booking" class="nav-cta">Book Now</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>3 KINGS</h1>
+            <p class="hero-subtitle">
+                Where live rock power collides with DJ mastery. 
+                A sonic fusion that transforms every stage into an unforgettable experience.
+            </p>
+            <a href="#booking" class="magnetic-btn" id="heroBtn">Book Your Event</a>
+        </div>
+        <img src="https://placehold.co/800x1200/0A1628/14B8A6?text=Band+Photo" 
+             alt="3 Kings Performance" 
+             class="hero-image">
+    </section>
+
+    <section class="bio">
+        <div class="bio-layout">
+            <div class="bio-image-container">
+                <img src="https://placehold.co/600x800/0A1628/14B8A6?text=Live+Performance" 
+                     alt="Live Performance" 
+                     class="bio-image scroll-reveal">
+            </div>
+            <div class="bio-content">
+                <div class="section-label">About</div>
+                <h2 class="bio-title">A Fusion Like No Other</h2>
+                <p class="bio-text">
+                    3 Kings is not just a band—it's a royal decree for unforgettable nights. Blending the raw power 
+                    of live drums, ripping guitar solos, and masterclass DJ wizardry, this trio of elite performers 
+                    turns every stage into a kingdom of sound.
+                </p>
+                <p class="bio-text">
+                    With <span class="highlight">Ryan Patrick</span> (guitar slayer from charting rock band OTHERWISE), 
+                    <span class="highlight">Joe Conner</span> (versatile industry drummer with thunderous groove), and 
+                    <span class="highlight">DJ Chaney</span> (the remix king with club-crushing instincts), 3 Kings delivers 
+                    a sonic spectacle that fuses rock energy with electronic firepower.
+                </p>
+                <p class="bio-text">
+                    Think renowned hits, both new and old, remixed into dance floor anthems—all performed with the explosive 
+                    power of a rock show. Whether it's a high-end corporate event or a luxury private party, 3K knows how to 
+                    make the ladies dance and the gents open the bar tab.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="members">
+        <div class="section-label">The Lineup</div>
+        <h2 class="bio-title">Meet the Kings</h2>
+        <div class="members-grid">
+            <div class="member scroll-reveal">
+                <div class="member-number">01</div>
+                <h4>Ryan Patrick</h4>
+                <div class="role">Guitar</div>
+                <p>
+                    Guitar slayer from charting rock band OTHERWISE, bringing raw rock power and ripping solos 
+                    that electrify every performance.
+                </p>
+            </div>
+            <div class="member scroll-reveal">
+                <div class="member-number">02</div>
+                <h4>Joe Conner</h4>
+                <div class="role">Drums</div>
+                <p>
+                    Versatile industry drummer with a thunderous groove that drives the energy and keeps the 
+                    crowd moving all night long.
+                </p>
+            </div>
+            <div class="member scroll-reveal">
+                <div class="member-number">03</div>
+                <h4>DJ Chaney</h4>
+                <div class="role">DJ</div>
+                <p>
+                    The remix king with club-crushing instincts, transforming iconic tracks into dance floor 
+                    anthems with masterful DJ wizardry.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="credentials">
+        <div class="credentials-layout">
+            <div class="credentials-content">
+                <div class="section-label">Track Record</div>
+                <h2>Proven Excellence</h2>
+            </div>
+            <div class="credentials-grid">
+                <div class="credential scroll-reveal">
+                    <div class="credential-value">RIAA GOLD</div>
+                    <div class="credential-label">Certified</div>
+                </div>
+                <div class="credential scroll-reveal">
+                    <div class="credential-value">150M+</div>
+                    <div class="credential-label">Spotify Streams</div>
+                </div>
+                <div class="credential scroll-reveal">
+                    <div class="credential-value">BET</div>
+                    <div class="credential-label">Award Nominations</div>
+                </div>
+                <div class="credential scroll-reveal">
+                    <div class="credential-value">TOP 25</div>
+                    <div class="credential-label">Billboard Charts</div>
+                </div>
+                <div class="credential scroll-reveal">
+                    <div class="credential-value">FILM & TV</div>
+                    <div class="credential-label">Music Placements</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="experience">
+        <div class="experience-content">
+            <div class="section-label">Experience</div>
+            <h2>The Main Event</h2>
+            <p style="font-size: 1.15rem; color: var(--gray); max-width: 700px;">
+                With magnetic stage presence and crowd-hyping charisma, 3 Kings isn't background music—they're the centerpiece.
+            </p>
+        </div>
+        <img src="https://placehold.co/1600x800/0A1628/14B8A6?text=High-End+Event+Performance" 
+             alt="High-End Event Performance" 
+             class="experience-image scroll-reveal">
+    </section>
+
+    <section class="video-section">
+        <div class="video-layout">
+            <div class="video-content">
+                <div class="section-label">Watch</div>
+                <h2>See 3 Kings in Action</h2>
+                <p>
+                    Experience the fusion of live rock energy and DJ mastery. 
+                    Watch as renowned hits transform into dance floor anthems.
+                </p>
+            </div>
+            <div class="video-container">
+                <iframe 
+                    src="https://www.youtube.com/embed/MqGzPfq79TE" 
+                    title="3 Kings Performance" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <section id="booking" class="booking">
+        <h2>Crown Your Event</h2>
+        <p>
+            Having rocked arenas, festivals, and award shows in their individual careers, 
+            these 3 Kings have now joined forces to build a new kingdom of unforgettable vibes.
+        </p>
+        <a href="mailto:booking@3kings.com" class="magnetic-btn" id="bookingBtn">Book 3 Kings</a>
+    </section>
+
+    <footer>
+        <div class="footer-logo">3 KINGS</div>
+        <p class="footer-text">© 2024 3 Kings. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Scroll reveal animations
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-reveal, .bio-image, .member, .credential').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Magnetic cursor effect for buttons
+        const magneticButtons = document.querySelectorAll('.magnetic-btn, .nav-cta');
+        
+        magneticButtons.forEach(button => {
+            button.addEventListener('mousemove', (e) => {
+                const rect = button.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                button.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px) scale(1.05)`;
+            });
+            
+            button.addEventListener('mouseleave', () => {
+                button.style.transform = 'translate(0, 0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
