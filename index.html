@@ -402,8 +402,8 @@
 
         .hero-image {
             width: 100%;
-            height: auto;
-            object-fit: contain;
+            height: 700px;
+            object-fit: cover;
             position: relative;
             animation: fadeIn 1.2s ease-out 0.3s backwards;
             transition: filter 0.3s ease;
@@ -611,15 +611,14 @@
             letter-spacing: -2px;
         }
 
-        .bio-layout {
+        .bio-grid {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: 1fr 1fr;
             gap: 4rem;
+            align-items: start;
         }
 
         .bio-content {
-            max-width: 900px;
-            margin: 0 auto;
             position: relative;
             z-index: 1;
         }
@@ -633,16 +632,15 @@
         }
 
         .bio-image-container {
-            width: calc(100% + 8rem);
-            margin-left: -4rem;
-            margin-top: 3rem;
+            position: relative;
+            z-index: 1;
         }
 
         .bio-image {
             width: 100%;
-            height: 500px;
+            height: 100%;
             object-fit: cover;
-            object-position: top center;
+            object-position: center;
             opacity: 0;
             transform: translateY(30px);
             transition: all 1s ease-out;
@@ -1327,6 +1325,11 @@
                 height: 500px;
             }
 
+            .bio-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
             .bio-image-container {
                 width: 100%;
                 margin-left: 0;
@@ -1438,7 +1441,7 @@
             -->
             <a href="#book" class="magnetic-btn" id="heroBtn" aria-label="Book 3 Kings for your event">Book Your Event</a>
         </div>
-        <img src="media/3KMainProfPicTop.webp" 
+        <img src="media/3kings-hero.jpg" 
              alt="3 Kings band members in sophisticated library setting with leather chairs and red carpet" 
              class="hero-image"
              width="800"
@@ -1452,7 +1455,7 @@
             <div class="section-label">About</div>
             <h2 id="bio-heading" class="section-heading">A Fusion Like No Other</h2>
         </div>
-        <div class="bio-layout">
+        <div class="bio-grid">
             <div class="bio-content">
                 <p class="bio-text">
                     3 Kings is not just a band—it's a royal decree for unforgettable nights. Blending the raw power 
@@ -1473,8 +1476,8 @@
                 </p>
             </div>
             <div class="bio-image-container">
-                <img src="media/3kings-alt.jpg" 
-                     alt="3 Kings band members in intimate setting by fireplace" 
+                <img src="media/3Kings_AboutSectionPic.webp" 
+                     alt="3 Kings band members" 
                      class="bio-image scroll-reveal"
                      width="600"
                      height="800"
