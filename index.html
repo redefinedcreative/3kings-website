@@ -1142,74 +1142,6 @@
             color: var(--white);
         }
 
-        /* Construction Banner */
-        .construction-banner {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(135deg, var(--dark-gray), var(--black));
-            border-top: 2px solid var(--gold);
-            border-radius: 8px 8px 0 0;
-            padding: 1.5rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 2rem;
-            z-index: 1001;
-            opacity: 0;
-            transform: translateY(100%);
-            animation: slideUp 0.6s ease-out 0.5s forwards;
-        }
-
-        @keyframes slideUp {
-            to {
-                opacity: 1;
-                transform: translate3d(0, 0, 0);
-            }
-        }
-
-        .construction-banner.hidden {
-            display: none;
-        }
-
-        .construction-text {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.25rem;
-            letter-spacing: 1px;
-            color: var(--white);
-            margin: 0;
-        }
-
-        .construction-close {
-            background: transparent;
-            border: 2px solid var(--gold);
-            color: var(--gold);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            line-height: 1;
-            transition: all 0.3s ease;
-            flex-shrink: 0;
-        }
-
-        .construction-close:hover,
-        .construction-close:focus {
-            background: var(--gold);
-            color: var(--black);
-            transform: rotate(90deg);
-        }
-
-        .construction-close:focus {
-            outline: 2px solid var(--white);
-            outline-offset: 2px;
-        }
-
         /* Accessibility - Focus States */
         a:focus,
         button:focus {
@@ -1251,12 +1183,6 @@
             
             .page-transition {
                 display: none;
-            }
-            
-            .construction-banner {
-                animation: none;
-                opacity: 1;
-                transform: translateY(0);
             }
 
             /* Disable texture effects for reduced motion */
@@ -1348,17 +1274,6 @@
             .booking {
                 padding: 0 2rem;
                 margin: 8rem auto;
-            }
-
-            .construction-banner {
-                flex-direction: column;
-                text-align: center;
-                gap: 1rem;
-                padding: 1rem 2rem;
-            }
-
-            .construction-text {
-                font-size: 1rem;
             }
 
             footer {
@@ -1606,11 +1521,6 @@
 
     </main>
 
-    <aside class="construction-banner" role="complementary" aria-label="Site construction notice">
-        <p class="construction-text">This site is under construction and will be ready to rock soon 🎸</p>
-        <button class="construction-close" aria-label="Close construction notice" title="Close">×</button>
-    </aside>
-
     <footer role="contentinfo">
         <div class="footer-content">
             <div class="footer-left">
@@ -1713,30 +1623,6 @@
             
             card.addEventListener('mousemove', handleCardMove, { passive: true });
         });
-
-        // Construction banner close functionality
-        const banner = document.querySelector('.construction-banner');
-        const closeBtn = document.querySelector('.construction-close');
-        
-        if (banner && localStorage.getItem('constructionBannerDismissed') === 'true') {
-            banner.classList.add('hidden');
-        }
-        
-        if (closeBtn && banner) {
-            closeBtn.addEventListener('click', () => {
-                banner.classList.add('hidden');
-                localStorage.setItem('constructionBannerDismissed', 'true');
-            });
-            
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && !banner.classList.contains('hidden')) {
-                    banner.classList.add('hidden');
-                    localStorage.setItem('constructionBannerDismissed', 'true');
-                    closeBtn.focus();
-                }
-            });
-        }
-
 
         // Logo smooth scroll to top
         const logo = document.querySelector('.logo');
