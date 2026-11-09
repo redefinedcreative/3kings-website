@@ -19,15 +19,15 @@ This file auto-loads when Claude Code (or any Claude tool) opens this repo. It c
 
 ## Workflow — the rules that keep deploys clean
 1. **Edit only in this local clone.** Never upload or edit files on github.com — that caused a divergence on 2026-05-27 and blocked pushes.
-2. **Commit + Push via GitHub Desktop.** The CLI `git` on this machine has no GitHub credentials cached; GitHub Desktop holds its own auth.
-3. **Hard-refresh after deploy** (`Cmd+Shift+R`). Cloudflare caches the HTML even when GitHub Pages has already updated.
-4. **If GitHub Desktop shows phantom changes** or `.git` errors: that's Google Drive File Stream evicting files. Pause Drive sync during commit/push.
+2. **Commit and push from `~/Developer/clients/3kings`**, with CLI `git` or GitHub Desktop. Both are authenticated as of 2026-11-08.
+3. **Hard-refresh after deploy** (`Cmd+Shift+R`). Cloudflare caches the HTML even after GitHub Pages has updated.
+4. **This repo is public** (free GitHub Pages hosting). Never commit private notes, secrets, or contact details that aren't already on the live site.
 
 ## Critical caveats
 - **Booking email** is `threekings130@gmail.com`. On the live page it renders as a scrambled `/cdn-cgi/l/email-protection` link — that's **Cloudflare's Email Address Obfuscation**, not a bug. The `mailto:` works normally for real visitors.
 - **YouTube embed IDs** (`MqGzPfq79TE`, `8I6YymNl9zA`, `RSSMSufvRiE`) are owned by their uploaders. If any creator disables embedding, the video shows Error 153 — no fix on our end.
 - **No automated tests, no staging environment.** A push goes straight to live. Eyeball-check before pushing.
-- **Clone lives in Google Drive** (operator's choice — risk noted). File Stream evicts files mid-operation, which can confuse git tooling. If commands report "No such file," retry; don't conclude it's missing.
+- **Clone location:** `~/Developer/clients/3kings`. It moved out of Google Drive on 2026-11-08 because Drive's File Stream evicted files during git operations. Raw media and old staging docs stay in Drive (`Clients/3kings`, formerly `Client Sites/3 Kings`).
 
 ## Brand quick-reference
 - **Primary gold:** `#FFB700` (WCAG AAA on black, ~10.5:1)
