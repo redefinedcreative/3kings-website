@@ -17,7 +17,7 @@ This file auto-loads when Claude Code (or any Claude tool) opens this repo. It c
 - **Auto-deploy:** every push to `main` deploys via GitHub Pages in ~30 s – 2 min
 - **Cache:** Cloudflare caches aggressively; always hard-refresh (`Cmd+Shift+R`) after deploy
 
-**Dead domain warning:** `3kingsband.com` does NOT resolve (NXDOMAIN). Old staging docs in `../files/` (sibling Google Drive folder) still reference it — that domain is not live. The real domain is `3kmusic.com`.
+**Dead domain warning:** `3kingsband.com` does NOT resolve (NXDOMAIN). Old staging docs in Drive `Clients/3kings/files/` (sibling Google Drive folder) still reference it — that domain is not live. The real domain is `3kmusic.com`.
 
 ## Workflow — the rules that keep deploys clean
 1. **Edit only in this local clone.** Never upload or edit files on github.com — that caused a divergence on 2026-05-27 and blocked pushes.
@@ -29,7 +29,7 @@ This file auto-loads when Claude Code (or any Claude tool) opens this repo. It c
 - **Booking email** is `threekings130@gmail.com`. On the live page it renders as a scrambled `/cdn-cgi/l/email-protection` link — that's **Cloudflare's Email Address Obfuscation**, not a bug. The `mailto:` works normally for real visitors.
 - **YouTube embed IDs** (`MqGzPfq79TE`, `8I6YymNl9zA`, `RSSMSufvRiE`) are owned by their uploaders. If any creator disables embedding, the video shows Error 153 — no fix on our end.
 - **No automated tests, no staging environment.** A push goes straight to live. Eyeball-check before pushing.
-- **Clone location:** `~/Developer/clients/3kings`. It moved out of Google Drive on 2026-11-08 because Drive's File Stream evicted files during git operations. Raw media and old staging docs stay in Drive (`Clients/3kings`, formerly `Client Sites/3 Kings`).
+- **Clone location:** `~/Developer/clients/3kings`. It moved out of Google Drive on 2026-11-08 because Drive's File Stream evicted files during git operations. Raw media and old staging docs are in Drive at `Clients/3kings` (moved from `Client Sites/3 Kings` on 2026-11-09).
 
 ## Brand quick-reference
 - **Primary gold:** `#FFB700` (WCAG AAA on black, ~10.5:1)
@@ -52,8 +52,8 @@ Full design tokens, components, motion, and asset standards: see [DESIGN.md](./D
 - **2026-05-27** — `.member-image` set to `object-position: center top` so member portraits crop from the top (heads in frame on tighter aspect ratios).
 
 ## Known open items
-- **Stale staging docs** in `../files/` (`CONFIG.json`, `DEPLOYMENT_GUIDE.md`, `BUILD_PROMPT.md`) still reference `3kingsband.com` and `booking@3kings.com`. Update or delete before they mislead a future reader.
+- **Stale staging docs** in Drive `Clients/3kings/files/` (`CONFIG.json`, `DEPLOYMENT_GUIDE.md`, `BUILD_PROMPT.md`) still reference `3kingsband.com` and `booking@3kings.com`. Update or delete before they mislead a future reader.
 - **`../files/build.sh` is broken** — case-sensitive grep that fails on the lowercase eyebrow text; also looks for a `media/` folder in the wrong location. It will always report "BUILD FAILED" even on a healthy site.
-- **Raw uncompressed images** live only in `../Raw Media/` and `../Band Members/` on Google Drive. Consider an external backup (private repo, external drive) if you'll ever need to re-export at different sizes.
+- **Raw uncompressed images** live only in Drive `Clients/3kings/Raw Media/` and Drive `Clients/3kings/Band Members/` on Google Drive. Consider an external backup (private repo, external drive) if you'll ever need to re-export at different sizes.
 - **OG image** is currently `media/3kings-hero.jpg` (an existing file), but its actual dimensions are unverified vs. the declared 1200×630. A purpose-built 1200×630 export would render better in social previews.
 - **No favicon currently declared** — worth adding (drop a `favicon.ico` or `favicon.png` and link it in `<head>`).
