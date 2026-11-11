@@ -7,7 +7,7 @@ This file auto-loads when Claude Code (or any Claude tool) opens this repo. It c
 ## Project
 - **Client:** 3 Kings — live rock + DJ fusion band, Las Vegas
 - **Agency:** Redefined Creative (Keegan Lanier)
-- **Moxie:** **not in RC's Moxie** (checked 2026-11-11).
+- **Moxie:** in RC's Moxie. Client **Ryan Patrick** (who also has Life By Music) › project **3 Kings** (slug `3kings`) (added 2026-11-11). **Pro bono:** RC isn't paid for this project.
 - **Status:** Production — site is live and being maintained
 
 ## Live deployment
