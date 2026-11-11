@@ -1,6 +1,6 @@
 # 3 Kings Band Website — Project Context
 
-**Track:** static. Hand-built HTML on GitHub Pages (predates the Astro standard). Standard stack: `~/Developer/agency/rc-playbook/tracks/static.md`.
+**Track:** static, **with deviations**: hand-built HTML on GitHub Pages (predates the Astro standard; see `docs/DECISIONS.md`). Standard stack: `~/Developer/agency/rc-playbook/tracks/static.md`.
 
 This file auto-loads when Claude Code (or any Claude tool) opens this repo. It captures live deployment facts, workflow rules, brand basics, and recent decisions. For the full design system see [DESIGN.md](./DESIGN.md).
 
